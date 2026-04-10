@@ -342,10 +342,6 @@ export default function App() {
                   </div>
                 </div>
 
-                <p className="text-xs text-gray-400 mb-4">
-                  Candidate Code: <span className="font-mono font-semibold text-gray-500">{candidate.ui_code}</span>
-                </p>
-
                 <motion.button onClick={handleShare}
                   whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.96 }}
                   className="w-full py-3 rounded-xl font-extrabold text-base text-white shadow-lg"
