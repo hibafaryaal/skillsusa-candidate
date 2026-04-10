@@ -1,0 +1,32 @@
+pipeline:
+  name: HOSA Online Deployer
+  identifier: HOSA_Online_Deployer
+  projectIdentifier: HOSA_Project
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: Build and Push
+        identifier: build_and_push
+        type: CI
+        spec:
+          cloneCodeRepo: true
+          infrastructure:
+            type: KubernetesDirect # Harness Free Tier uses their hosted workers
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build Production Site
+                  spec:
+                    shell: Sh
+                    command: |
+                      npm install
+                      npm run build
+              - step:
+                  type: Run
+                  name: Publish to Web
+                  spec:
+                    shell: Sh
+                    command: |
+                      # This pushes the built folder to the 'gh-pages' branch
+                      npx gh-pages -d dist --repo https://${GH_TOKEN}@github.com/<user>/<repo>.git --user "Harness Deployer <deploy@harness.io>"
