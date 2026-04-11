@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { QRCodeSVG } from 'qrcode.react'
-import hibaPhoto from './images/final_updated_image.png'
+import hibaPhoto from './images/hiba_skills_usa_officail.PNG'
 import data from './data/state.json'
 
 const NAVY  = '#002D72'
@@ -244,30 +244,18 @@ export default function App() {
             {/* Photo */}
             <div className="flex rounded-2xl overflow-hidden shadow-lg" style={{ border: '2px solid #d0d9f0' }}>
               <div className="w-1.5 flex-shrink-0" style={{ background: `linear-gradient(180deg, ${NAVY}, ${RED})` }} />
-              <div className="flex-1 bg-white flex items-center justify-center" style={{ height: 460 }}>
+              <div className="flex-1 bg-white flex items-center justify-center" style={{ height: 500 }}>
                 <AnimatePresence mode="wait">
                   {photos[active] ? (
                     <motion.div key={active}
                       initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }}
                       transition={{ duration: 0.2 }}
-                      className="relative w-full h-full group cursor-zoom-in"
+                      className="relative w-full h-full cursor-zoom-in"
                       onClick={() => setLightbox(true)}
                     >
                       <img src={photos[active]} alt="Hiba Faryaal"
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                        style={{ objectPosition: '40% 30%' }} />
-                      <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none"
-                        style={{ background: 'linear-gradient(to top, rgba(255,255,255,0.5), transparent)' }} />
-                      <div className="absolute top-3 right-3 flex items-center gap-1.5 px-2.5 py-1.5 rounded-full text-white text-[11px] font-semibold opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                        style={{ background: 'rgba(0,0,0,0.52)' }}>
-                        <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={2} viewBox="0 0 24 24">
-                          <circle cx="11" cy="11" r="7" />
-                          <path d="M21 21l-4.35-4.35" />
-                          <path d="M11 8v6" />
-                          <path d="M8 11h6" />
-                        </svg>
-                        Expand
-                      </div>
+                        className="w-full h-full object-cover"
+                        style={{ objectPosition: 'center top' }} />
                     </motion.div>
                   ) : (
                     <div className="flex flex-col items-center gap-3 text-gray-300">
